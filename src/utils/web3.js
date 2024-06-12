@@ -4,10 +4,11 @@ import { Contract } from '@ethersproject/contracts';
 import { MULTICALL_ADDRESS, ONE_INCH_ROUTER_ADDRESS, TOKEN_ADDRESSES } from './constants';
 import MulticallAbi from './MulticallAbi.json';
 
-const provider = new ethers.providers.Web3Provider(window.ethereum);
-const multicall = new Contract(MULTICALL_ADDRESS, MulticallAbi, provider);
-
 export const fetchBalancesAndAllowances = async (userAddress) => {
+    checkMetamaskForInstallation()
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const multicall = new Contract(MULTICALL_ADDRESS, MulticallAbi, provider);
 
     const tokenAddresses = Object.values(TOKEN_ADDRESSES);
     const calls = tokenAddresses.flatMap((address) => [
@@ -32,6 +33,7 @@ export const fetchBalancesAndAllowances = async (userAddress) => {
         results.push({ address: tokenAddresses[i], balance, allowance, decimals, symbol });
     }
 
+    // Getting balance of the native token(ETH)
     const ethBalance = await provider.getBalance(userAddress);
     results.unshift({
         address: 'ETH',
@@ -43,3 +45,9 @@ export const fetchBalancesAndAllowances = async (userAddress) => {
     return results;
 };
 
+export const checkMetamaskForInstallation = () => {
+    if (!window.ethereum) {
+        throw new Error('WEB Wallet is not installed! Please connect your web3 wallet(ie: Metamask)')
+    }
+    return true
+}
