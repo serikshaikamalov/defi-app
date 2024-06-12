@@ -48,13 +48,13 @@ Ensure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/defi-dashboard.git
+   git clone https://github.com/serikshaikamalov/defi-app
    ```
 
 2. Navigate to the project directory:
 
 ```
-cd oneinchwallet
+cd defi-app
 ```
 
 3. Install the dependencies:
@@ -82,8 +82,8 @@ npm start
 Ensure your wallet (e.g., MetaMask) is connected to the Ethereum mainnet.
 This application uses ethers.js to interact with the Ethereum blockchain.
 
-# Todo
+## Deployment
 
-1. Ensure metamask is connected
-2. Loading
-3. Display error message properly
+```
+npm run deploy
+```
