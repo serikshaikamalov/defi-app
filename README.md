@@ -77,3 +77,9 @@ npm start
 
 Ensure your wallet (e.g., MetaMask) is connected to the Ethereum mainnet.
 This application uses ethers.js to interact with the Ethereum blockchain.
+
+# Todo
+
+1. Ensure metamask is connected
+2. Loading
+3. Display error message properly
