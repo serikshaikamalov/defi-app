@@ -6,9 +6,9 @@ import MulticallAbi from './MulticallAbi.json';
 
 export const fetchBalancesAndAllowances = async (userAddress) => {
     checkMetamaskForInstallation()
-
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const multicall = new Contract(MULTICALL_ADDRESS, MulticallAbi, provider);
+    await checkNetwork(provider)
 
     const tokenAddresses = Object.values(TOKEN_ADDRESSES);
     const calls = tokenAddresses.flatMap((address) => [
@@ -51,3 +51,13 @@ export const checkMetamaskForInstallation = () => {
     }
     return true
 }
+
+
+export const checkNetwork = async (provider) => {
+    const network = await provider.getNetwork();
+    // 1 is the chain ID for the Ethereum mainnet
+    if (network.chainId !== 1) {
+        throw new Error('Please connect to the Ethereum mainnet.')
+    }
+    return true
+};

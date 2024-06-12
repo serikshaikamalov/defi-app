@@ -14,13 +14,12 @@ export default function Wallet() {
     const getBalances = async () => {
         try {
             if(!ethers.utils.isHexString(userAddress)){
-                alert('Wrong address. Please provide valid ethereum address')
-                return
+                throw new Error('Wrong address. Please provide valid ethereum address')                
             } 
-
             setLoading(true)
-            const results = await fetchBalancesAndAllowances(userAddress);
-            setBalances(results);
+            setError(null)
+            const results = await fetchBalancesAndAllowances(userAddress);            
+            setBalances(results);            
         } catch (ex) {
             console.error(`getBalances ex: `, ex)
             setError(ex?.message)
