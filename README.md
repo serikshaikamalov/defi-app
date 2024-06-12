@@ -2,6 +2,10 @@
 
 A simple web application that displays user balances for 10 popular tokens on the Ethereum blockchain, including DAI, USDC, USDT, and the native token (ETH). The interface also displays the user allowance of each token for the 1inch router contract.
 
+## Demo
+
+URL: [Demo](https://serikshaikamalov.github.io/defi-app/)
+
 ## Features
 
 - Connect a wallet or enter an Ethereum address to retrieve balances.
