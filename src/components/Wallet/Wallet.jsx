@@ -31,7 +31,7 @@ export default function Wallet() {
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">DeFi App</h1>
-            <div className="mb-4">
+            <div className="mb-4 flex gap-4">
                 <input type="text"
                     placeholder='Enter ethereum address' 
                     required value={userAddress}
